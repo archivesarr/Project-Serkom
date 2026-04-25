@@ -134,7 +134,7 @@
                     </div>
                     <div class="flex gap-1">
                         @if ($products->onFirstPage())
-                            <span class="px-3 py-2 rounded bg-gray-400 text-gray-600 cursor-not-allowed">‹</span>
+                            <a href="{{ route('products.index', array_merge(request()->query(), ['page' => $products->lastPage()])) }}" class="px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-900 transition">‹</a>
                         @else
                             <a href="{{ $products->previousPageUrl() }}" class="px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-900 transition">‹</a>
                         @endif
@@ -152,7 +152,7 @@
                         @if ($products->hasMorePages())
                             <a href="{{ $products->nextPageUrl() }}" class="px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-900 transition">›</a>
                         @else
-                            <span class="px-3 py-2 rounded bg-gray-400 text-gray-600 cursor-not-allowed">›</span>
+                            <a href="{{ route('products.index', array_merge(request()->query(), ['page' => 1])) }}" class="px-3 py-2 rounded bg-gray-700 text-white hover:bg-gray-900 transition">›</a>
                         @endif
                     </div>
                 </div>
